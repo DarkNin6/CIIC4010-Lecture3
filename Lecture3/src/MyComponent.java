@@ -1,5 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.Random;
+
 import javax.swing.JComponent;
 
 public class MyComponent extends JComponent {
@@ -26,6 +28,12 @@ public class MyComponent extends JComponent {
 		bottomRightCar.setPosition(0,0);
 		bottomRightCar.setColor(Color.ORANGE);
 		bottomRightCar.draw(g);
+		
+		Random r = new Random();
+		bottomRightCar.setPosition(r.nextInt(getWidth()), r.nextInt(getHeight()));
+		bottomRightCar.setColor(Color.MAGENTA);
+		bottomRightCar.draw(g);
+		
 		
 		System.out.println(counter++);
 	}

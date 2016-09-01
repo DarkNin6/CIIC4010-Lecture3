@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -9,15 +10,37 @@ public class MutableCar {
 	
 	private double xPos = 0;
 	private double yPos = 0;
+	private Color color;
 	
 	public MutableCar(double x, double y) {
-		xPos = x;
-		yPos = y;
+		this.xPos = x;
+		this.yPos = y;
 	}
+	
+	public MutableCar(double x, double y, Color color) {
+		this.xPos = x;
+		this.yPos = y;
+		this.color = color;
+	}
+	
+	public Color getColor() {
+		return this.color;
+	}
+	
+	public double getXPos() {
+		return this.xPos;
+	}
+	 public double getYPos() {
+		 return this.yPos;
+	 }
 	
 	public void setPosition(double xPos, double yPos) {
 		this.xPos = xPos;
 		this.yPos = yPos;
+	}
+	
+	public void setColor(Color color) {
+		this.color = color;
 	}
 	
 	public void draw(Graphics g) {
@@ -41,9 +64,11 @@ public class MutableCar {
 
 		Rectangle.Double body = new Rectangle.Double(this.xPos+0,this.yPos+10,60.0,10.0);
 
+		g2.setColor(Color.BLACK);
 		g2.draw(rearTire);
 		g2.draw(frontTire);
-		g2.draw(body);
+		g2.setColor(this.getColor());
+		g2.fill(body);
 		g2.draw(rearWindow);
 		g2.draw(frontWindow);
 		g2.draw(roof);
